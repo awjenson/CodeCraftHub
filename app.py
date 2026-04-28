@@ -34,6 +34,7 @@ import json
 import os
 import threading
 from datetime import datetime, timezone
+from flask_cors import CORS
 
 # ----------------------------
 # Future refactor note for your future self
@@ -205,6 +206,14 @@ def validate_course_payload(data, require_all=True):
 # Flask app and routes
 # ----------------------------
 app = Flask(__name__)
+
+# ── CORS (Cross-Origin Resource Sharing) ────────────────────────────────────
+# When the frontend (index.html) runs in a browser and makes fetch() calls to
+# the Flask backend, the browser blocks those requests by default if the two
+# are on different "origins" (e.g. file:// vs http://localhost:5000).
+# flask-cors adds the necessary HTTP headers to Flask's responses to tell the
+# browser it's safe to allow those cross-origin requests.
+CORS(app)
 
 @app.route('/api/courses', methods=['POST'])
 def add_course():
