@@ -1,0 +1,13 @@
+# Virtual environment
+.venv/
+
+# Local data file (not meant to be shared)
+courses.json
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS system file
+.DS_Store
